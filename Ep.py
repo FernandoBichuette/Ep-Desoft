@@ -7,21 +7,30 @@ Created on Wed Oct  9 18:50:42 2019
 
 import random
 
-carta={rei,
-       dama,
-       valete,
-       As} 
+baralho={'rei':10,
+       'dama':10,
+       'valete':10,
+       'As':1,
+       '2':2,
+       '3':3,
+       '4':4,
+       '5':5,
+       '6':6,
+       '7':7,
+       '8':8,
+       '9':9,
+       '10':10} 
 
 carta_da_mesa=[]
 player=[]
 
 while len(carta_da_mesa) != 2:
-    carta_da_mesa.append(random.randint(1,11))
+    carta_da_mesa.append(random.choice(list(baralho.values())))
     if len(carta_da_mesa) == 2:
         print('A mesa tem X e ',carta_da_mesa[1])
 
 while len(player) !=2:
-    player.append(random.randint(1,11))
+    player.append(random.choice(list(baralho.values())))
     if len(player)==2:
         print("Você tem ",player)
 
@@ -33,22 +42,18 @@ elif sum(carta_da_mesa) > 21:
     
 while sum(player) < 21:
     
-    pergunta= str(input('Você quer ficar[stay] ou continuar[hit]'))
+    pergunta= str(input('Você quer ficar[stay] ou continuar[hit]:'))
     
     if pergunta == 'hit':
-        player.append(random.randint(1, 11))
+        player.append(random.choice(list(baralho.values())))
         print("Você tem agora o total " + str(sum(player)) + " com as seguintes cartas ", player)
     
     if pergunta == 'stay':
-        carta_da_mesa.append(random.randint(1,11))
+        carta_da_mesa.append(random.choice(list(baralho.values())))
         print('A mesa tem X e ',carta_da_mesa[1])
         print("Você tem ",player)
 
-    else:
-        print("Você tem agora o total " + str(sum(carta_da_mesa)) + " com as seguintes cartas ", carta_da_mesa[1])
-
-        print("Você tem agora o total " + str(sum(player)) + " com as seguintes cartas ", player)
-        
+    if pergunta == 'sair':
         if sum(player) < sum(carta_da_mesa):
             print('A casa venceu!')
             
