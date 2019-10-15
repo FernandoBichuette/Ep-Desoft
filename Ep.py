@@ -8,11 +8,11 @@ Created on Wed Oct  9 18:50:42 2019
 import random
 
 
-dinheiro=int(input('Quanto de dinheiro você?: '))  
+carteira=int(input('Quanto de dinheiro você?: '))  
 
 aposta=int(input('Qual aposta?: '))  
 
-if aposta >= 0.3*dinheiro:
+if aposta >= 0.3*carteira:
         
     carta_da_mesa=[]
     player=[]
