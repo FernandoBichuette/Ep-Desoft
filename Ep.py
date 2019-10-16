@@ -77,6 +77,7 @@ if aposta >= 0.3*carteira:
         
         while len(player) !=2:
             player.append(random.choice(list(baralho.values())))
+            
             if len(player)==2:
                 print("Você tem ",player)
         
@@ -122,7 +123,7 @@ if aposta >= 0.3*carteira:
                     elif sum(player) == 21:
                         ganho = aposta
                         carteira=carteira+ganho
-                        print("você venceu" + str(carteira))                       
+                        print("você venceu " + str(carteira))                       
                         a=False
                         
                 if pergunta == 'sair':    
