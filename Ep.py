@@ -99,9 +99,7 @@ while game:
             if len(player)==2:
                 print("Você tem ",player)
                 
-        while sum(carta_da_mesa) < 17:
-            carta_da_mesa.append(random.choice(list(baralho.values())))
-            print('A mesa pegou mais uma cartas',carta_da_mesa)
+        
         
              
         if sum(player) < 21:
@@ -109,7 +107,7 @@ while game:
             a = True
             
             while a:
-                
+                    
                 if sum(player) > 21:
                     print("Você perdeu. A casa ganhou")
                     break
@@ -127,8 +125,18 @@ while game:
                 elif sum(carta_da_mesa) > 21:
                     print('A casa perdeu, você ganhou ' +str(aposta))
                     break
-                    
+                
+                elif soma_pontos(player) == 21 and soma_pontos(carta_da_mesa) == 21:
+                    ganho = aposta
+                    carteira=carteira+ganho
+                    print("Os dois ganham")
+                
+                
                 pergunta= str(input('Você quer ficar[hit] ou sair[sair]?: '))
+                
+                while sum(carta_da_mesa) < 17:
+                    carta_da_mesa.append(random.choice(list(baralho.values())))
+                    print('A mesa pegou mais uma cartas ',carta_da_mesa)
                 
                 if pergunta=='fim':
                     a=False 
@@ -174,9 +182,9 @@ while game:
                         a=False
                    
      
-        if pergunta=='fim':
-            print('Seu dinheiro total é igual ' + str(carteira) )
-            break
+            if pergunta =='fim':
+                print('Seu dinheiro total é igual ' + str(carteira) )
+                break
 
     else:
         print('Você não pode jogar')
