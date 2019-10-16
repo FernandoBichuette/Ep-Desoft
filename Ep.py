@@ -68,49 +68,80 @@ if aposta >= 0.3*carteira:
             if len(carta_da_mesa) == 2:
                 
                 print('A mesa tem X e ',carta_da_mesa[1])
-        
+                  
+            
         while len(player) !=2:
             player.append(random.choice(list(baralho.values())))
             
             if len(player)==2:
                 print("Você tem ",player)
         
+                           
+        while sum(carta_da_mesa) < 17:
+            carta_da_mesa.append(random.choice(list(baralho.values())))
+            print('A mesa pegou mais uma cartas',carta_da_mesa)
+        
+
+                            
         # Para casa
         if sum(carta_da_mesa) == 21:
             print("A casa ganhou, você perdeu")
-            
+            continue            
+        
         elif sum(carta_da_mesa) > 21:
             print('A casa perdeu')
+            continue
+            
+        
         if sum(player) > 21:
             print("Você perdeu. A casa ganhou")
-                
+            continue
+                            
         elif sum(player) == 21:
             ganho = aposta*1.5
             carteira=carteira+ganho
             print("21, você venceu! " + str(carteira))   
+            continue
         
         elif carteira <=0:
             print("você perdeu o jogo")
             print("GAME OVER")
-            break
-            
-        if sum(player) < 21:
-            
-            a = True
-            
-            while a==True:
-            
+            break                
+        
+        
+        a = True 
+        
+        while a==True:           
+                # Para casa
+                if sum(carta_da_mesa) == 21:
+                    print("A casa ganhou, você perdeu")
+                                
+                elif sum(carta_da_mesa) > 21:
+                    print('A casa perdeu')
+                    break
+                    
+                
+                if sum(player) > 21:
+                    print("Você perdeu. A casa ganhou")
+                    break
+                                    
+                elif sum(player) == 21:
+                    ganho = aposta*1.5
+                    carteira=carteira+ganho
+                    print("21, você venceu! " + str(carteira))   
+                    break
+                
+                elif carteira <=0:
+                    print("você perdeu o jogo")
+                    print("GAME OVER")
+                    break 
                 pergunta= str(input('Você quer ficar[hit] ou sair[sair]?: '))
                 
-                
+            
                 if pergunta == 'hit':
                     player.append(random.choice(list(baralho.values())))
                     print("Você tem agora o total " + str(sum(player)) + " com as seguintes cartas ", player)
                 
-                
-                
-                    
-                    
                     if sum(player) > 21:
 
                         ganho = -aposta
