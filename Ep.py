@@ -17,7 +17,7 @@ def soma_pontos(cartas):
     return total
     
  
-carteira=int(input('Quanto de dinheiro você?: ')) 
+carteira=int(input('Quantidade de dinheiro inicial?: ')) 
       
 game=True
 
@@ -121,10 +121,12 @@ while game:
         
             if sum(carta_da_mesa) == 21:
                 print("A casa ganhou, você perdeu -"+str(aposta))
+                carteira=carteira-aposta
                 break
                 
             elif sum(carta_da_mesa) > 21:
                 print('A casa perdeu, você ganhou ' +str(aposta))
+                carteira=carteira+aposta
                 break
             
             elif soma_pontos(player) == 21 and soma_pontos(carta_da_mesa) == 21:
@@ -153,7 +155,7 @@ while game:
                     if mudoucarta:
                         ganho = -aposta
                         carteira=carteira+ganho
-                        print("você perdeu " + str(soma_pontos(player)) + ". seu saldo é " + str(carteira))
+                        print("você perdeu por" + str(soma_pontos(player)) + ". seu saldo é " + str(carteira))
                         a=False
                     ab=False
                 
@@ -178,19 +180,20 @@ while game:
                         print('A casa venceu!')
                         ganho = -aposta
                         carteira=carteira+ganho
-                        print("você perdeu " +str(soma_pontos(player))+". seu saldo é " + str(carteira))
+                        print("você perdeu por " +str(soma_pontos(player))+". seu saldo é " + str(carteira))
                         
                         a=False
                 else:
                     ganho = aposta
                     carteira=carteira+ganho
-                    print("você venceu " +str(soma_pontos(player))+". seu saldo é " + str(carteira))
+                    print("você venceu por " +str(soma_pontos(player))+". seu saldo é " + str(carteira))
                     
                     #eae
                     a=False
-               
+
  
         if pergunta =='fim':
             print('Seu dinheiro total é igual ' + str(carteira) )
             break
-
+     
+            
