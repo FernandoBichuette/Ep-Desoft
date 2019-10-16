@@ -9,7 +9,7 @@ import random
 
 carteira=int(input('Quanto de dinheiro você?: ')) 
 
-aposta=int(input('Qual aposta?: '))  
+aposta=float(input('Qual aposta?: '))  
 
 if aposta >= 0.3*carteira:
     
@@ -97,7 +97,7 @@ if aposta >= 0.3*carteira:
         elif carteira <=0:
             print("você perdeu o jogo")
             print("GAME OVER")
-            game=False
+            break
             
         if sum(player) < 21:
             
@@ -107,12 +107,15 @@ if aposta >= 0.3*carteira:
             
                 pergunta= str(input('Você quer ficar[hit] ou sair[sair]?: '))
                 
-                if pergunta=='fim':
-                    a=False 
                 
                 if pergunta == 'hit':
                     player.append(random.choice(list(baralho.values())))
                     print("Você tem agora o total " + str(sum(player)) + " com as seguintes cartas ", player)
+                
+                
+                
+                    
+                    
                     if sum(player) > 21:
 
                         ganho = -aposta
@@ -141,7 +144,7 @@ if aposta >= 0.3*carteira:
                         a=False
     
      
-        if pergunta=='fim':
+        if aposta == str():
             print('Seu dinheiro total é igual ' + str(carteira) )
             break
     
