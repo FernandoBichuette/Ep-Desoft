@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Oct  9 18:50:42 2019
-
-@author: Fernando
-"""
 
 import random
 
@@ -84,6 +78,7 @@ if aposta >= 0.3*carteira:
         # Para casa
         if sum(carta_da_mesa) == 21:
             print("A casa ganhou, você perdeu")
+            
         elif sum(carta_da_mesa) > 21:
             print('A casa perdeu')
         if sum(player) > 21:
@@ -126,7 +121,8 @@ if aposta >= 0.3*carteira:
                     elif sum(player) == 21:
                         ganho = aposta
                         carteira=carteira+ganho
-                        print("você venceu " + str(carteira))                       
+                        print("você venceu " + str(carteira))
+                        aposta=int(input("nova aposta?: "))
                         a=False
                         
                 if pergunta == 'sair':    
@@ -135,12 +131,14 @@ if aposta >= 0.3*carteira:
                             ganho = -aposta
                             carteira=carteira+ganho
                             print("você perdeu " + str(carteira))
+                            aposta=int(input("nova aposta?: "))
                             a=False
                     else:
                         ganho = aposta
                         carteira=carteira+ganho
                         print("você venceu " + str(carteira))
-                        
+                        aposta=int(input("nova aposta?: "))
+                        #eae
                         a=False
     
      
@@ -151,18 +149,3 @@ if aposta >= 0.3*carteira:
     else:
         print('Você não pode jogar')        
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-            
-    
-    
-    
-    
-    
