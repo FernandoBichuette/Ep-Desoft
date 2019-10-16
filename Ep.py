@@ -16,9 +16,9 @@ if aposta >= 0.3*carteira[0]:
     
     game=True
     while game: 
-        
+        print('\n------------------')
         print("O jogo começa!\n")
-        
+        print('------------------\n')
         carta_da_mesa=[]
         player=[]
         
@@ -111,10 +111,10 @@ if aposta >= 0.3*carteira[0]:
                             print('A casa venceu!')
                             a=False
                     else:
-                        ganho=carteira+aposta
-                        carteira.append(ganho)
+                    
+                        carteira.append(aposta)
                         total=sum(carteira)
-                        print('Você venceu'+str(total))
+                        print('Você venceu'+ str(total))
                         
                         a=False
                    
