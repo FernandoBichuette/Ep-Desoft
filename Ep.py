@@ -7,17 +7,16 @@ Created on Wed Oct  9 18:50:42 2019
 
 import random
 
-carteira=[]
-carteira.append(int(input('Quanto de dinheiro você?: ')))  
+carteira=int(input('Quanto de dinheiro você?: ')) 
 
 aposta=int(input('Qual aposta?: '))  
 
-if aposta >= 0.3*carteira[0]:
+if aposta >= 0.3*carteira:
     
     game=True
     while game: 
         print('\n------------------')
-        print("O jogo começa!\n")
+        print("O jogo começa!")
         print('------------------\n')
         carta_da_mesa=[]
         player=[]
@@ -27,6 +26,7 @@ if aposta >= 0.3*carteira[0]:
         while i < 4:
             
             
+
             if i == 0:
                 istr='de Ouros'
             if i == 1:
@@ -72,6 +72,7 @@ if aposta >= 0.3*carteira[0]:
             carta_da_mesa.append(random.choice(list(baralho.values())))
             
             if len(carta_da_mesa) == 2:
+                
                 print('A mesa tem X e ',carta_da_mesa[1])
         
         while len(player) !=2:
@@ -84,7 +85,18 @@ if aposta >= 0.3*carteira[0]:
             print("A casa ganhou, você perdeu")
         elif sum(carta_da_mesa) > 21:
             print('A casa perdeu')
+        if sum(player) > 21:
+            print("Você perdeu. A casa ganhou")
+                
+        elif sum(player) == 21:
+            ganho = aposta*1.5
+            carteira=carteira+ganho
+            print("21, você venceu! " + str(carteira))   
         
+        elif carteira <=0:
+            print("você perdeu o jogo")
+            print("GAME OVER")
+            game=False
             
         if sum(player) < 21:
             
@@ -94,41 +106,44 @@ if aposta >= 0.3*carteira[0]:
             
                 pergunta= str(input('Você quer ficar[hit] ou sair[sair]?: '))
                 
+                if pergunta=='fim':
+                    a=False 
                 
                 if pergunta == 'hit':
                     player.append(random.choice(list(baralho.values())))
                     print("Você tem agora o total " + str(sum(player)) + " com as seguintes cartas ", player)
                     if sum(player) > 21:
-                        
+
+                        ganho = -aposta
+                        carteira=carteira+ganho
+                        print("você perdeu " + str(carteira))
                         a=False
                     
                     elif sum(player) == 21:
-                        
+                        ganho = aposta
+                        carteira=carteira+ganho
+                        print("você venceu" + str(carteira))                       
                         a=False
                         
                 if pergunta == 'sair':    
                     if sum(player) < sum(carta_da_mesa):
                             print('A casa venceu!')
+                            ganho = -aposta
+                            carteira=carteira+ganho
+                            print("você perdeu " + str(carteira))
                             a=False
                     else:
-                    
-                        carteira.append(aposta)
-                        total=sum(carteira)
-                        print('Você venceu'+ str(total))
+                        ganho = aposta
+                        carteira=carteira+ganho
+                        print("você venceu " + str(carteira))
                         
                         a=False
-                   
-        
-                
-        if sum(player) > 21:
-            print("Você perdeu. A casa ganhou")
-                
-        elif sum(player) == 21:
-            ganho=aposta + aposta*1.5
-            carteira.append(ganho)
-            total=sum(carteira)
-            print("21, você venceu!"+str(total))        
-            
+    
+     
+        if pergunta=='fim':
+            print('Seu dinheiro total é igual ' + str(carteira) )
+            break
+    
     else:
         print('Você não pode jogar')        
         
